@@ -9,6 +9,30 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/isAdmin', (req, res) => {
+    if(!req.session.isLogin) {
+        res.send({
+            status : false
+        });
+        return;
+    }
+    res.send({
+        status : req.session.isAdmin
+    })
+});
+
+router.get('/isJadmin', (req, res) => {
+    if(!req.session.isLogin) {
+        res.send({
+            status : false
+        });
+        return;
+    }
+    res.send({
+        status : req.session.username === "jtjisgod"
+    })
+});
+
 router.post('/create', (req, res) => {
 
     if(typeof req.body.username !== 'string') return;
@@ -111,6 +135,7 @@ router.post('/login', function(req, res) {
         }
         req.session.isLogin = true;
         req.session.username = username;
+        req.session.isAdmin = account.isAdmin;
         res.send({
             status : true,
             message : "로그인에 성공하였습니다."

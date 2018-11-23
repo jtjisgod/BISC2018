@@ -1,8 +1,28 @@
 import React, { Component } from 'react';
 import { Input, Button, Dropdown } from 'semantic-ui-react';
+const JEnum = require('../enum');
 
 class App extends Component {
+    state = {
+        isAdmin : false
+    }
+    constructor(props) {
+        super(props);
+        JEnum.axios.get(JEnum.isAdmin)
+        .then(res => {
+            if(!res.data.status) {
+                window.location.href = "/";
+                return;
+            }
+            this.setState({
+                isAdmin : true
+            })
+        })
+    }
     render() {
+        if(!this.state.isAdmin) {
+            return (<div></div>);
+        }
         const category = [
             {
                 text: '락피킹',

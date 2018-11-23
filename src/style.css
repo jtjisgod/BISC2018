@@ -38,4 +38,23 @@ footer {
     margin : 50px auto;
 }
 
+.ctfProps {
+    margin-bottom : 30px;
+}
 
+.ctfProps > div {
+    height: 100px;
+    width : 24%;
+    padding : 20px;
+    background : #eee;
+    color : #313131;
+    display : inline-block;
+    font-size : 20px;
+    margin : 5px;
+    cursor : pointer;
+}
+
+.ctfProps > div:hover {
+    background: #ffaaaa;
+    color : #fff;
+}

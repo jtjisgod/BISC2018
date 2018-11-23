@@ -10,7 +10,10 @@ import Challenge from './pages/Challenge';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Register from './pages/Register';
+
 import bisc from './pages/bisc';
+import jadmin from './pages/jadmin';
+
 import NotFound from './pages/NotFound';
 
 import Menu from './components/Menu';
@@ -52,6 +55,7 @@ class App extends Component {
                                 <Route path="/Login" component={Login} />
                                 <Route path="/Logout" component={Logout} />
                                 <Route path="/Register" component={Register} />
+                                <Route path="/jadmin" component={jadmin} />
                                 <Route path="/bisc" component={bisc} />
                                 <Route component={NotFound} />
                             </Switch>
