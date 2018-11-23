@@ -37,5 +37,7 @@ mongoose.connect("mongodb://localhost/BISC", {useNewUrlParser: true})
     .catch(e => console.error(e));
 
 app.use('/accounts', require('./routes/accounts'));
+app.use('/events', require('./routes/events'));
+app.use('/jadmin', require('./routes/jadmin'));
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));

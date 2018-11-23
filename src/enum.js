@@ -10,6 +10,8 @@ Obj.login = Obj.url + "/accounts/login";
 Obj.logout = Obj.url + "/accounts/logout";
 Obj.isAdmin = Obj.url + "/accounts/isAdmin";
 Obj.isJadmin = Obj.url + "/accounts/isJadmin";
+Obj.jadminEventCreate = Obj.url + "/jadmin/createEvent";
+Obj.events = Obj.url + "/events"
 
 Obj.axios = Axios.create({
     baseURL: Obj.url,

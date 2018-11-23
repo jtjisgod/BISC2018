@@ -4,7 +4,11 @@ const JEnum = require('../enum');
 
 class App extends Component {
     state = {
-        isAdmin : false
+        isAdmin : false,
+        events : [],
+        eventCode : "",
+        eventName : "",
+        eventDelete : "",
     }
     constructor(props) {
         super(props);
@@ -18,29 +22,39 @@ class App extends Component {
                 isAdmin : true
             })
         })
+        JEnum.axios.get(JEnum.events)
+        .then(res => {
+            if(res.data.status) {
+                this.setState({
+                    events : res.data.data
+                })
+            }
+        })
+    }
+    eventCreate = () => {
+        const eventName = this.state.eventName;
+        const eventCode = this.state.eventCode;
+        JEnum.axios.post(JEnum.jadminEventCreate, {
+            name : eventName,
+            code : eventCode,
+        }).then(res => {
+            window.location.reload();
+        })
+    }
+    eventDelete = () => {
+        alert(this.state.eventDelete);
     }
     render() {
         if(!this.state.isAdmin) {
             return (<div></div>);
         }
-        const category = [
-            {
-                text: '락피킹',
-                value: 'lock'
-            },
-            {
-                text: '방탈출 1',
-                value: 'room1'
-            },
-            {
-                text: '방탈출 2',
-                value: 'room2'
-            },
-            {
-                text: '블라인드',
-                value: 'blind'
-            },
-        ];
+        const category = [];
+        this.state.events.forEach(element => {
+            category.push({
+                value : element.code,
+                text : element.name
+            })
+        });
         return (
             <div>
                 <h1>>> Jadmin 관리자</h1>
@@ -59,15 +73,16 @@ class App extends Component {
                                 
                                 <h3>## 부스 삭제</h3>
                                 <h5>- 부스를 선택하여 삭제해주세요.</h5>
-                                <Dropdown placeholder='부스를 선택해주세요.' selection options={category} fluid/>
-                                <Button color="red" fluid style={{marginTop:5}}>부스 삭제</Button>
+                                <Dropdown placeholder='부스를 선택해주세요.' selection options={category} fluid onChange={(e, {value})=>{this.setState({eventDelete:value})}}/>
+                                <Button color="red" fluid style={{marginTop:5}} onClick={this.eventDelete}>부스 삭제</Button>
 
+                                {/* EventName & EventCode */}
                                 <h3>## 부스 생성</h3>
                                 <h5>- 부스 이름을 적어주세요.</h5>
-                                <Input type="text" placeholder="부스 이름" fluid/>
+                                <Input type="text" placeholder="부스 이름" fluid onChange={(e)=>{this.setState({eventName:e.target.value})}}/>
                                 <h5>- 부스의 고유한 코드를 적어주세요.</h5>
-                                <Input type="text" placeholder="부스 코드" fluid style={{marginTop:5}}/>
-                                <Button color="blue" fluid style={{marginTop:5}}>부스 생성</Button>
+                                <Input type="text" placeholder="부스 코드" fluid style={{marginTop:5}} onChange={(e)=>{this.setState({eventCode:e.target.value})}}/>
+                                <Button color="blue" fluid style={{marginTop:5}} onClick={this.eventCreate}>부스 생성</Button>
                             </td>
                             <td>
                                 <h2># CTF 관련</h2>
