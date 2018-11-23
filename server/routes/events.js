@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Events = require('../models/events');
+const Report = require('../models/report');
 
 router.get('/', (req, res) => {
     Events.find({})
@@ -17,5 +18,6 @@ router.get('/', (req, res) => {
         });
     })
 })
+
 
 module.exports = router;
