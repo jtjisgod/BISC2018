@@ -13,6 +13,7 @@ Obj.isJadmin = Obj.url + "/accounts/isJadmin";
 Obj.jadminEventCreate = Obj.url + "/jadmin/createEvent";
 Obj.events = Obj.url + "/events"
 Obj.eventsReport = Obj.url + "/admin/report";
+Obj.rank = Obj.url + "/events/rank/";
 
 Obj.axios = Axios.create({
     baseURL: Obj.url,

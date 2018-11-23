@@ -1,51 +1,68 @@
 import React, { Component } from 'react';
 import { Menu, Segment, Table } from 'semantic-ui-react';
+const JEnum = require('../enum');
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category : {
-        "ctf" : "CTF",
-        "rock" : "락피킹",
-        "room1" : "방탈출 1",
-        "room2" : "방탈출 2",
-        "blind" : "블라인드"
-      },
+      category : [],
       activeItem : "ctf",
+      rank : []
     }
+    JEnum.axios.get(JEnum.events)
+    .then(res => {
+        if(res.data.status) {
+          const a = [{code:"ctf",name:"CTF"}]
+          res.data.data.forEach(e => {
+            a.push(e);
+          })
+          this.setState({
+              category : a
+          })
+        }
+    })
   }
   click = (id) => {
     this.setState({
       activeItem : id
     });
+    this.showRank(id);
   }
+  showRank = (id) => {
+    JEnum.axios.get(JEnum.rank + id)
+    .then(res => {
+      this.setState({
+        rank : res.data
+      })
+    })
+  }
+
   render() {
     const activeItem = this.state.activeItem;
     const category = [];
-    Object.keys(this.state.category).forEach(c => {
+    this.state.category.forEach(c => {
       category.push((
         <Menu.Item
-          name={this.state.category[c]}
-          active={activeItem === c}
-          onClick={() => {this.click(c)}}
+          name={c['name']}
+          active={activeItem === c['code']}
+          onClick={() => {this.click(c['code'])}}
         />
       ));
     });
     const rank = [];
-    for(let i=0;i<20;i++) {
-      let name = "장태진";
-      let lastPhone = "8793";
-      let time = "130";
+    let i = 0;
+    this.state.rank.forEach(e => {
+      i += 1
       rank.push((
         <Table.Row textAlign="center">
-          <Table.Cell>{i+1}</Table.Cell>
-          <Table.Cell>{name}</Table.Cell>
-          <Table.Cell>{lastPhone}</Table.Cell>
-          <Table.Cell>{time} sec.</Table.Cell>
+          <Table.Cell>{i}</Table.Cell>
+          <Table.Cell>{e.name}</Table.Cell>
+          <Table.Cell>{e.phone}</Table.Cell>
+          <Table.Cell>{e.time} sec.</Table.Cell>
         </Table.Row>
       ));
-    }
+    })
     return (
       <div>
         <div>
