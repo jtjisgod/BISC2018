@@ -104,14 +104,15 @@ router.post('/login', function(req, res) {
     }).then(function(account) {
         if(account === null) {
             res.send({
-                status : true,
+                status : false,
                 message : "로그인에 실패하였습니다."
             })
             return;
         }
+        req.session.isLogin = true;
         req.session.username = username;
         res.send({
-            status : false,
+            status : true,
             message : "로그인에 성공하였습니다."
         })
     }).catch(function(err) {

@@ -38,7 +38,7 @@ class App extends Component {
             MenuItems.push((
                 <Menu.Menu position='right'>
                     <Menu.Item
-                        name='Login'
+                        name='Logout'
                         onClick={this.handleItemClick}
                     />
                 </Menu.Menu>
@@ -47,7 +47,7 @@ class App extends Component {
             MenuItems.push((
                 <Menu.Menu position='right'>
                     <Menu.Item
-                        name='Logout'
+                        name='Login'
                         onClick={this.handleItemClick}
                     />
                 </Menu.Menu>

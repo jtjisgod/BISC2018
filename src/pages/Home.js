@@ -7,6 +7,25 @@ class App extends Component {
       <div>
         <Grid columns="2">
           <GridColumn>
+            <h1># HOME</h1>
+            <div>
+              모든 정보들은 BISC 행사 이후 바로 삭제됩니다.<br/>
+              해당 페이지에서는 모든 부스의 랭킹을 실시간으로 확인 할 수 있습니다.<br/>
+              <h2>- CTF</h2>
+              CTF는 매 쉬는 시간에 열리며, 쉬는시간마다 다른 문제로 열립니다.<br/>
+              모든 문제를 가장 빠르게 푼 사람에게 상품을 지급합니다.<br/>
+              풀지 못한 문제는 30분으로 처리합니다.<br/>
+              <h2>- 락피킹</h2>
+              Fugiat occaecat qui aliqua aliquip culpa in Lorem. Ullamco pariatur reprehenderit proident in esse ullamco cillum. Laborum labore nostrud elit voluptate eu occaecat id reprehenderit. Anim exercitation amet velit fugiat minim eiusmod consectetur cupidatat labore eiusmod laboris fugiat do Lorem. Laborum anim dolor voluptate tempor cupidatat laboris anim ex anim aliquip irure.
+              <h2>- 방탈출 1</h2>
+              Fugiat occaecat qui aliqua aliquip culpa in Lorem. Ullamco pariatur reprehenderit proident in esse ullamco cillum. Laborum labore nostrud elit voluptate eu occaecat id reprehenderit. Anim exercitation amet velit fugiat minim eiusmod consectetur cupidatat labore eiusmod laboris fugiat do Lorem. Laborum anim dolor voluptate tempor cupidatat laboris anim ex anim aliquip irure.
+              <h2>- 방탈출 2</h2>
+              Fugiat occaecat qui aliqua aliquip culpa in Lorem. Ullamco pariatur reprehenderit proident in esse ullamco cillum. Laborum labore nostrud elit voluptate eu occaecat id reprehenderit. Anim exercitation amet velit fugiat minim eiusmod consectetur cupidatat labore eiusmod laboris fugiat do Lorem. Laborum anim dolor voluptate tempor cupidatat laboris anim ex anim aliquip irure.
+              <h2>- 눈가리고 아웅</h2>
+              Fugiat occaecat qui aliqua aliquip culpa in Lorem. Ullamco pariatur reprehenderit proident in esse ullamco cillum. Laborum labore nostrud elit voluptate eu occaecat id reprehenderit. Anim exercitation amet velit fugiat minim eiusmod consectetur cupidatat labore eiusmod laboris fugiat do Lorem. Laborum anim dolor voluptate tempor cupidatat laboris anim ex anim aliquip irure.
+            </div>
+          </GridColumn>
+          <GridColumn>
             <h1># 시간표</h1>
             <div>
               <Table style={{width:500}}>
@@ -59,21 +78,6 @@ class App extends Component {
                   </Table.Row>
                 </Table.Body>
               </Table>
-            </div>
-          </GridColumn>
-          <GridColumn>
-            <h1># HOME</h1>
-            <div>
-              모든 정보들은 BISC 행사 이후 바로 삭제됩니다.<br/>
-              해당 페이지에서는 모든 부스의 랭킹을 실시간으로 확인 할 수 있습니다.<br/>
-              <br/>
-              CTF는 매 쉬는 시간에 열리며, 쉬는시간마다 다른 문제로 열립니다.<br/>
-              모든 문제를 가장 빠르게 푼 사람에게 상품을 지급합니다.<br/>
-            </div>
-            <h1># 실시간 공지</h1>
-            <div>
-              Fugiat occaecat qui aliqua aliquip culpa in Lorem. Ullamco pariatur reprehenderit proident in esse ullamco cillum. Laborum labore nostrud elit voluptate eu occaecat id reprehenderit. Anim exercitation amet velit fugiat minim eiusmod consectetur cupidatat labore eiusmod laboris fugiat do Lorem. Laborum anim dolor voluptate tempor cupidatat laboris anim ex anim aliquip irure.
-              Ut nisi elit enim voluptate id cupidatat esse consequat exercitation reprehenderit. Consequat cupidatat nisi ullamco fugiat cillum officia nostrud exercitation cillum duis. Eu incididunt dolore ullamco ad magna excepteur laboris eu elit velit labore non elit eiusmod.
             </div>
           </GridColumn>
         </Grid>

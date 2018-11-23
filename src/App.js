@@ -27,7 +27,7 @@ class App extends Component {
         JEnum.axios.get(JEnum.check)
             .then(res => {
                 this.setState({
-                    isLogin : res.status,
+                    isLogin : res.data.status,
                 })
             })
     }

@@ -20,7 +20,7 @@ app.use(session({
     secret: '#!#!#SESSIONID#!#!#',
     resave: false,
     saveUninitialized: true
-}));
+}));   
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
