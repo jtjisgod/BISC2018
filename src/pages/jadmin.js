@@ -14,7 +14,9 @@ class App extends Component {
         probName : "",
         probCode : "",
         probFlag : "",
-        probBody : ""
+        probBody : "",
+        
+        probs : []
     }
     constructor(props) {
         super(props);
@@ -35,6 +37,12 @@ class App extends Component {
                     events : res.data.data
                 })
             }
+        })
+        JEnum.axios.get(JEnum.jadminProbs)
+        .then(res => {
+            this.setState({
+                probs : res.data
+            })
         })
     }
     eventCreate = () => {
@@ -65,6 +73,12 @@ class App extends Component {
             window.location.reload();
         })        
     }
+    probClick = (id) => {
+        JEnum.axios.get(JEnum.jadminProbToggle + id)
+        .then(res => {
+            window.location.reload();
+        })
+    }
     render() {
         if(!this.state.isAdmin) {
             return (<div></div>);
@@ -76,15 +90,19 @@ class App extends Component {
                 text : element.name
             })
         });
+        let probs = []
+        this.state.probs.forEach(e => {
+            probs.push((
+                <div onClick={() => { this.probClick(e._id) }} className={e.isOpen?"greenProb":""}>{e.title}</div>
+            ))
+        })
+        
         return (
             <div>
                 <h1>>> Jadmin 관리자</h1>
                 <h2># CTF문제 열고 닫기</h2>
                 <div className="ctfProps">
-                    <div>Find the key on the bitmap</div>
-                    <div>Find the key on the bitmap</div>
-                    <div>Find the key on the bitmap</div>
-                    <div>Find the key on the bitmap</div>
+                    {probs}
                 </div>
                 <table width="100%" >
                     <tbody>

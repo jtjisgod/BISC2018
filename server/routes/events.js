@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Events = require('../models/events');
 const Report = require('../models/report');
+const Probs = require('../models/props');
 
 router.get('/', (req, res) => {
     Events.find({})
@@ -42,5 +43,20 @@ router.get('/rank/:code', (req, res) => {
     })
 })
 
+router.get('/probs', (req, res) => {
+    Probs.find({
+        isOpen : true
+    })
+    .then(probs => {
+        output = []
+        probs.forEach(e => {
+            output.push({
+                title : e.title,
+                body : e.description,
+            })
+        })
+        res.send(output);
+    })
+});
 
 module.exports = router;

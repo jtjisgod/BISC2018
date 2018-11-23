@@ -58,3 +58,8 @@ footer {
     background: #ffaaaa;
     color : #fff;
 }
+
+.greenProb {
+    background : green !important;
+    color : #fff !important;
+}

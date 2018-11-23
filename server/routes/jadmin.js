@@ -57,4 +57,38 @@ router.post('/createProb', (req, res) => {
     })
 });
 
+router.get('/probs', (req, res) => {
+    Props.find({})
+    .then(probs => {
+        output = []
+        probs.forEach(e => {
+            output.push({
+                _id  : e._id,
+                title : e.title,
+                body : e.description,
+                isOpen : e.isOpen,
+                flag : e.flag,
+            })
+        })
+        res.send(output);
+    })
+});
+
+router.get('/toggle/:id', (req, res) => {
+    Props.findOne({
+        _id : req.params.id
+    })
+    .then(prob => {
+        Props.update({
+            _id : req.params.id
+        }, { $set : { isOpen : !prob.isOpen } })
+        .then( e => {
+            res.send({
+                "status" : "success",
+                "message" : ""
+            })
+        } )
+    })
+});
+
 module.exports = router;
