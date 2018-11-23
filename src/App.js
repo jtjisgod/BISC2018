@@ -15,43 +15,57 @@ import NotFound from './pages/NotFound';
 
 import Menu from './components/Menu';
 
+const JEnum = require('./enum');
+
 
 class App extends Component {
-  render() {
-    return (
-        <React.Fragment>
-            <header>
-                <Container>
-                    <h1>BISC CTF</h1>
-                    <div>
-                        <Menu/>
-                    </div>
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLogin : false
+        }
+        JEnum.axios.get(JEnum.check)
+            .then(res => {
+                this.setState({
+                    isLogin : res.status,
+                })
+            })
+    }
+    render() {
+        return (
+            <React.Fragment>
+                <header>
+                    <Container>
+                        <h1>BISC CTF</h1>
+                        <div>
+                            <Menu isLogin={this.state.isLogin}/>
+                        </div>
+                    </Container>
+                </header>
+                <section>
+                    <Container>
+                        <BrowserRouter>
+                            <Switch>
+                                <Route exact path="/" component={Home} />
+                                <Route path="/rank" component={Rank} />
+                                <Route path="/Challenge" component={Challenge} />
+                                <Route path="/Login" component={Login} />
+                                <Route path="/Logout" component={Logout} />
+                                <Route path="/Register" component={Register} />
+                                <Route path="/bisc" component={bisc} />
+                                <Route component={NotFound} />
+                            </Switch>
+                        </BrowserRouter>
+                    </Container>
+                </section>
+                <footer>
+                    <Container>
+                        Copyright (c) jtjisgod &amp; BISC
                 </Container>
-            </header>
-            <section>
-                <Container>
-                    <BrowserRouter>
-                        <Switch>
-                            <Route exact path = "/" component = {Home} />
-                            <Route path = "/rank" component = {Rank} />
-                            <Route path = "/Challenge" component = {Challenge} />
-                            <Route path = "/Login" component = {Login} />
-                            <Route path = "/Logout" component = {Logout} />
-                            <Route path = "/Register" component = {Register} />
-                            <Route path = "/bisc" component = {bisc} />
-                            <Route component={NotFound}/>
-                        </Switch>        
-                    </BrowserRouter>
-                </Container>
-            </section>
-            <footer>
-                <Container>
-                    Copyright (c) jtjisgod &amp; BISC
-                </Container>
-            </footer>
-        </React.Fragment>
-    )
-  }
+                </footer>
+            </React.Fragment>
+        )
+    }
 }
 
 

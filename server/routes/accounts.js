@@ -22,17 +22,26 @@ router.post('/create', (req, res) => {
     var phone    = req.body.phone.trim();
 
     if(!username, !password, !fullname, !phone) {
-        res.send(returnCode['invalid']['value'])
+        res.send({
+            "status" : false,
+            "message" : "올바르지 않은 데이터가 있습니다."
+        })
         return;
     }
 
     if(!ValidCheck("username", username)) {
-        res.send(returnCode['invalid']['username'])
+        res.send({
+            "status" : false,
+            "message" : "4~20자의 영소문자와 숫자, _ 조합으로 만들어주세요."
+        })
         return;
     }
 
     if(!ValidCheck("phone", phone)) {
-        res.send(returnCode['invalid']['phone'])
+        res.send({
+            "status" : false,
+            "message" : "핸드폰 번호는 010-1111-2222 형식으로 만들어주세요."
+        })
         return;
     }
 
@@ -49,7 +58,12 @@ router.post('/create', (req, res) => {
             return;
         }
 
-        Accounts.create(username, password, fullname, phone)
+        Accounts.create({
+            username : username, 
+            password : password,
+            fullname : fullname,
+            phone : phone
+        })
         .then(function() {
             res.send({
                 status : true,

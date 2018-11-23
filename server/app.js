@@ -8,6 +8,14 @@ const session = require('express-session');
 const app = express();
 const port = 8080;
 
+app.all('/*', function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:3000');
+    res.header('Access-Control-Allow-Methods', 'POST, PUT, GET, DELETE');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+});
+
 app.use(session({
     secret: '#!#!#SESSIONID#!#!#',
     resave: false,
@@ -15,7 +23,6 @@ app.use(session({
 }));
 
 app.use(express.static('public'));
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
