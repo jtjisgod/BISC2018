@@ -6,9 +6,15 @@ class App extends Component {
     state = {
         isAdmin : false,
         events : [],
+
         eventCode : "",
         eventName : "",
         eventDelete : "",
+
+        probName : "",
+        probCode : "",
+        probFlag : "",
+        probBody : ""
     }
     constructor(props) {
         super(props);
@@ -43,6 +49,21 @@ class App extends Component {
     }
     eventDelete = () => {
         alert(this.state.eventDelete);
+    }
+    createProb = () => {
+        const name = this.state.probName;
+        const flag = this.state.probFlag;
+        const code = this.state.probCode;
+        const body = this.state.probBody;
+ 
+        JEnum.axios.post(JEnum.jadminProbCreate, {
+            name : name,
+            code : code,
+            flag : flag,
+            body : body
+        }).then(res => {
+            window.location.reload();
+        })        
     }
     render() {
         if(!this.state.isAdmin) {
@@ -85,24 +106,14 @@ class App extends Component {
                                 <Button color="blue" fluid style={{marginTop:5}} onClick={this.eventCreate}>부스 생성</Button>
                             </td>
                             <td>
-                                <h2># CTF 관련</h2>
-                        
+                                <h2># CTF 관련</h2>   
                                 <h3>## CTF 문제 수정/삭제</h3>
-                                <h5>- 문제를 선택해주세요.</h5>
-                                <Dropdown placeholder='문제를 선택해주세요.' selection options={category} fluid/>
-                                <div>
-                                    <Input type="text" placeholder="문제 이름" fluid style={{marginTop:5}}/>
-                                    <Input type="text" placeholder="문제 코드" fluid style={{marginTop:5}}/>
-                                    <TextArea placeholder="문제 코드" style={{marginTop:5,width:'100%',padding:10,height:400}}/>
-                                    <Button color="green" fluid style={{marginTop:5}}>문제 수정</Button>
-                                    <Button color="red" fluid style={{marginTop:5}}>문제 삭제</Button>
-                                </div>
-
                                 <h5>문제 생성</h5>
-                                <Input type="text" placeholder="문제 이름" fluid/>
-                                <Input type="text" placeholder="문제 코드" fluid style={{marginTop:5}}/>
-                                <TextArea placeholder="문제 코드" style={{marginTop:5,width:'100%',padding:10,height:400}}/>
-                                <Button color="blue" fluid style={{marginTop:5}}>부스 생성</Button>
+                                <Input type="text" placeholder="문제 이름" fluid onChange={(e)=>{this.setState({probName:e.target.value})}}/>
+                                <Input type="text" placeholder="문제 코드" fluid style={{marginTop:5}} onChange={(e)=>{this.setState({probCode:e.target.value})}}/>
+                                <Input type="text" placeholder="FLAG" fluid style={{marginTop:5}} onChange={(e)=>{this.setState({probFlag:e.target.value})}}/>
+                                <TextArea placeholder="문제 내용" style={{marginTop:5,width:'100%',padding:10,height:300}} onChange={(e)=>{this.setState({probBody:e.target.value})}}/>
+                                <Button color="blue" fluid style={{marginTop:5}} onClick={this.createProb}>문제 생성</Button>
                             </td>
                         </tr>
                     </tbody>

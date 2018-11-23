@@ -14,6 +14,7 @@ Obj.jadminEventCreate = Obj.url + "/jadmin/createEvent";
 Obj.events = Obj.url + "/events"
 Obj.eventsReport = Obj.url + "/admin/report";
 Obj.rank = Obj.url + "/events/rank/";
+Obj.jadminProbCreate = Obj.url + "/jadmin/createProb";
 
 Obj.axios = Axios.create({
     baseURL: Obj.url,
