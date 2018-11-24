@@ -16,13 +16,9 @@ class App extends Component {
               모든 문제를 가장 빠르게 푼 사람에게 상품을 지급합니다.<br/>
               풀지 못한 문제는 30분으로 처리합니다.<br/>
               <h2>- 락피킹</h2>
-              Fugiat occaecat qui aliqua aliquip culpa in Lorem. Ullamco pariatur reprehenderit proident in esse ullamco cillum. Laborum labore nostrud elit voluptate eu occaecat id reprehenderit. Anim exercitation amet velit fugiat minim eiusmod consectetur cupidatat labore eiusmod laboris fugiat do Lorem. Laborum anim dolor voluptate tempor cupidatat laboris anim ex anim aliquip irure.
               <h2>- 방탈출 1</h2>
-              Fugiat occaecat qui aliqua aliquip culpa in Lorem. Ullamco pariatur reprehenderit proident in esse ullamco cillum. Laborum labore nostrud elit voluptate eu occaecat id reprehenderit. Anim exercitation amet velit fugiat minim eiusmod consectetur cupidatat labore eiusmod laboris fugiat do Lorem. Laborum anim dolor voluptate tempor cupidatat laboris anim ex anim aliquip irure.
               <h2>- 방탈출 2</h2>
-              Fugiat occaecat qui aliqua aliquip culpa in Lorem. Ullamco pariatur reprehenderit proident in esse ullamco cillum. Laborum labore nostrud elit voluptate eu occaecat id reprehenderit. Anim exercitation amet velit fugiat minim eiusmod consectetur cupidatat labore eiusmod laboris fugiat do Lorem. Laborum anim dolor voluptate tempor cupidatat laboris anim ex anim aliquip irure.
-              <h2>- 눈가리고 아웅</h2>
-              Fugiat occaecat qui aliqua aliquip culpa in Lorem. Ullamco pariatur reprehenderit proident in esse ullamco cillum. Laborum labore nostrud elit voluptate eu occaecat id reprehenderit. Anim exercitation amet velit fugiat minim eiusmod consectetur cupidatat labore eiusmod laboris fugiat do Lorem. Laborum anim dolor voluptate tempor cupidatat laboris anim ex anim aliquip irure.
+              <h2>- 미스터리 풍선</h2>
             </div>
           </GridColumn>
           <GridColumn>

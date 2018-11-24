@@ -63,3 +63,10 @@ footer {
     background : green !important;
     color : #fff !important;
 }
+
+.challengeBody {
+    margin-top : 70px;
+    border-bottom : 1px solid #ccc;
+    padding-bottom  : 80px;
+}
+

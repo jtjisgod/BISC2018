@@ -81,8 +81,32 @@ router.get('/toggle/:id', (req, res) => {
     .then(prob => {
         Props.update({
             _id : req.params.id
-        }, { $set : { isOpen : !prob.isOpen } })
+        }, { $set : { isOpen : !prob.isOpen, openTime:Date.now() } })
         .then( e => {
+            if(prob.isOpen) {
+                Accounts.find().then(rows => {
+                    const targets = []
+                    rows.forEach(r => {
+                       var flag = false;
+                       r.solved.forEach(rs => {
+                           if(rs === req.params.id) {
+                               flag = true;
+                           }
+                       })
+                       if(!flag) {
+                            targets.push(r._id);
+                       }
+                    });
+                    targets.forEach(target => {
+                        Accounts.findOneAndUpdate({_id:target}, {$inc:{spendTime: 1800000}})
+                        .then(() => {})
+                        res.send({
+                            "status" : true,
+                        })
+                        return;
+                    })
+                })
+            }
             res.send({
                 "status" : "success",
                 "message" : ""

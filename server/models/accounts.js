@@ -21,6 +21,14 @@ const Database = new mongoose.Schema({
     isAdmin : {
         type: Boolean,
         default : false
+    },
+    solved : {
+        type : Array,
+        default : []
+    },
+    spendTime : {
+        type: Number,
+        default : 0
     }
 }, {
     timestamps: true

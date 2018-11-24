@@ -13,6 +13,7 @@ class App extends Component {
     JEnum.axios.get(JEnum.events)
     .then(res => {
         if(res.data.status) {
+          this.click('ctf')
           const a = [{code:"ctf",name:"CTF"}]
           res.data.data.forEach(e => {
             a.push(e);
