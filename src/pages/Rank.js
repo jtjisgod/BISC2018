@@ -80,7 +80,7 @@ class App extends Component {
                   <Table.HeaderCell width="100">#</Table.HeaderCell>
                   <Table.HeaderCell>이름</Table.HeaderCell>
                   <Table.HeaderCell>전화번호 뒷자리</Table.HeaderCell>
-                  <Table.HeaderCell>Spend Time</Table.HeaderCell>
+                  <Table.HeaderCell>{this.state.activeItem === "ctf" ? "Score" : "Spend Time"}</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>

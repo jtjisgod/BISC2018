@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 router.get('/rank/:code', (req, res) => {
     if(typeof req.params.code !== 'string') return;
     if(req.params.code === "ctf") {
-        Accounts.find().sort({spendTime:1})
+        Accounts.find().sort({spendTime:-1})
         .then(rows => {
             console.log(rows);
             const output = [];
@@ -118,6 +118,13 @@ router.post('/auth', (req, res) => {
             }).then(()=>{
                 Probs.findById(id)
                 .then(r => {
+                    if(!r.isOpen){
+                        res.send({
+                            "status" : false,
+                            "message" : "닫힌 문제입니다."
+                        })
+                        return;
+                    }
                     if(r.flag === flag) {
                         // Account
                         let spendTime = Date.now() - r.openTime
@@ -126,13 +133,13 @@ router.post('/auth', (req, res) => {
                             if(!account.spendTime) account.spendTime = 0;
                             const solved = account.solved;
                             solved.push(id);
-                            Accounts.findOneAndUpdate({_id:account._id}, {$set:{spendTime:account.spendTime + spendTime,solved:solved}})
+                            Accounts.findOneAndUpdate({_id:account._id}, {$inc:{spendTime:(60 * 30 * 1000 - spendTime)},$set:{solved:solved}})
                             .then(r => {
                                 res.send({
                                     "status" : true,
                                     "message" : "축하합니다."
                                 })
-                                window.location.reload();
+                                // window.location.reload();
                                 return;
                             })
                         })
